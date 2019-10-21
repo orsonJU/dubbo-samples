@@ -29,11 +29,16 @@ public class Application {
     private static String zookeeperHost = System.getProperty("zookeeper.address", "127.0.0.1");
 
     public static void main(String[] args) throws Exception {
+        // 相当于<dubbo:service>
         ServiceConfig<GreetingsService> service = new ServiceConfig<>();
         service.setApplication(new ApplicationConfig("first-dubbo-provider"));
+        // 相当于<dubbo:service registry="">
         service.setRegistry(new RegistryConfig("zookeeper://" + zookeeperHost + ":2181"));
+        // 相当于<dubbo:service interface="">
         service.setInterface(GreetingsService.class);
+        // 相当于<dubbo:service ref="">
         service.setRef(new GreetingsServiceImpl());
+        // 服务发布
         service.export();
 
         System.out.println("dubbo service started");

@@ -26,14 +26,18 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 public class GreetingServiceIT {
+    // test case 依赖了真是当zookeeper
     private static String zookeeperHost = System.getProperty("zookeeper.address", "127.0.0.1");
 
     @Test
     public void test() {
+        // ReferenceConfig相当与<reference>标签
         ReferenceConfig<GreetingsService> reference = new ReferenceConfig<>();
         reference.setApplication(new ApplicationConfig("first-dubbo-consumer"));
         reference.setRegistry(new RegistryConfig("zookeeper://" + zookeeperHost + ":2181"));
         reference.setInterface(GreetingsService.class);
+
+        //这里的get方法需要去真实的zookeeper上去获取
         GreetingsService service = reference.get();
         String message = service.sayHi("dubbo");
         TestCase.assertEquals(message, "hi, dubbo");
