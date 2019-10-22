@@ -21,12 +21,15 @@
        xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 开启sprng占位 -->
     <context:property-placeholder/>
 
     <dubbo:application name="demo-consumer"/>
 
+    <!-- 接收参数zookee。address，如果没有的话，使用默认值127.0.0.1 -->
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
+    <!-- 相当于new ReferenceConfig<>(), true表示必须存在 -->
     <dubbo:reference id="demoService" check="true" interface="org.apache.dubbo.samples.basic.api.DemoService"/>
 
 </beans>

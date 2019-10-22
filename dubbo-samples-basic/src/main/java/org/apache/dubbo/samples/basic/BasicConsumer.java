@@ -26,8 +26,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class BasicConsumer {
 
     public static void main(String[] args) {
+        // 加载consumer配置
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/dubbo-demo-consumer.xml");
         context.start();
+
+        // 获取reference的service实例
         DemoService demoService = (DemoService) context.getBean("demoService");
         String hello = demoService.sayHello("world");
         System.out.println(hello);

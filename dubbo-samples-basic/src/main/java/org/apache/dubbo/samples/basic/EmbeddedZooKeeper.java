@@ -42,6 +42,7 @@ import org.springframework.util.SocketUtils;
  * @author Mark Fisher
  * @author David Turanski
  */
+// idea 自己封装的 zookeeper，继承spring的LifeCycle
 public class EmbeddedZooKeeper implements SmartLifecycle {
 
     /**
@@ -159,6 +160,7 @@ public class EmbeddedZooKeeper implements SmartLifecycle {
     public synchronized void start() {
         if (zkServerThread == null) {
             zkServerThread = new Thread(new ServerRunnable(), "ZooKeeper Server Starter");
+            // mist 设置成守护线程
             zkServerThread.setDaemon(daemon);
             zkServerThread.start();
         }
@@ -174,6 +176,7 @@ public class EmbeddedZooKeeper implements SmartLifecycle {
             // This will log an exception on shutdown; see
             // https://issues.apache.org/jira/browse/ZOOKEEPER-1873 for details.
             try {
+                // idea，通过反射获取到ZooKeeperServerMain的shutdown方法，厉害啊
                 Method shutdown = ZooKeeperServerMain.class.getDeclaredMethod("shutdown");
                 shutdown.setAccessible(true);
                 shutdown.invoke(zkServer);
@@ -187,6 +190,7 @@ public class EmbeddedZooKeeper implements SmartLifecycle {
             // the server is shutdown; this will block until
             // the shutdown is complete.
             try {
+                //等待zookeeper停止
                 zkServerThread.join(5000);
                 zkServerThread = null;
             }
@@ -224,6 +228,7 @@ public class EmbeddedZooKeeper implements SmartLifecycle {
     private class ServerRunnable implements Runnable {
 
         @Override
+        // 使用原生的zookeeper来创建实例
         public void run() {
             try {
                 Properties properties = new Properties();

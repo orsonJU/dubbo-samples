@@ -28,6 +28,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+// idea 指定测试的上下文配置
 @ContextConfiguration(locations = "classpath*:spring/dubbo-demo-consumer.xml")
 public class DemoServiceIT {
     @Autowired

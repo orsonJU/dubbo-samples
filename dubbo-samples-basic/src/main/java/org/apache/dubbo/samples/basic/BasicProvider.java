@@ -26,13 +26,16 @@ import java.util.concurrent.CountDownLatch;
 public class BasicProvider {
 
     public static void main(String[] args) throws Exception {
+        // 创建一个线程，启动zookeeper
         new EmbeddedZooKeeper(2181, false).start();
         // wait for embedded zookeeper start completely.
         Thread.sleep(1000);
 
+        // 加载spring配置
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/dubbo-demo-provider.xml");
         context.start();
 
+        // 等待
         System.out.println("dubbo service started");
         new CountDownLatch(1).await();
     }
