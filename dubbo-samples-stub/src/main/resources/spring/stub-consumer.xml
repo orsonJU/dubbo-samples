@@ -29,6 +29,7 @@
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
+    <!-- idea， 使用了 dubbo:reference stub='true', stub接收一个class全类名或者一个boolean，当为boolean的时候，会查找一个对应的server + Stub的类 -->
     <dubbo:reference id="demoService" check="false" interface="org.apache.dubbo.samples.stub.api.DemoService"
                      stub="true"/>
 </beans>
