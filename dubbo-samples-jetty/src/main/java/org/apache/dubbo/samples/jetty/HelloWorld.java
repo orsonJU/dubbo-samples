@@ -30,6 +30,7 @@ import org.eclipse.jetty.server.handler.AbstractHandler;
 /**
  * use a simple HelloWorld handler to run the server
  */
+// mist 这里的AbstractHandler应该是jetty的范畴
 public class HelloWorld extends AbstractHandler
 {
     @Override

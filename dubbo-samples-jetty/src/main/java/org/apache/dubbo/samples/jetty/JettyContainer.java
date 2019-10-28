@@ -27,6 +27,8 @@ import org.slf4j.LoggerFactory;
 /**
  * Dubbo Container Extension, used to customize the load content.
  */
+// idea， dubbo默认提供了3个container，1） spring 2） slf4j   3）logback
+// 这里展示的是实现自己的container，只是这个例子中，使用了netty来作为其中一宗资源
 public class JettyContainer implements Container {
 
     private static final Logger logger = LoggerFactory.getLogger(JettyContainer.class);
