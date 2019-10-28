@@ -28,11 +28,13 @@
     <dubbo:reference id="orderService" check="false" interface="org.apache.dubbo.samples.service.OrderService"/>
     <dubbo:reference id="storageService" check="false" interface="org.apache.dubbo.samples.service.StorageService"/>
 
+    <!-- spring 配置 -->
     <bean id="business" class="org.apache.dubbo.samples.service.impl.BusinessServiceImpl">
         <property name="orderService" ref="orderService"/>
         <property name="storageService" ref="storageService"/>
     </bean>
 
+    <!-- mist seata，蚂蚁金服金服的开源分布式事务 -->
     <bean class="io.seata.spring.annotation.GlobalTransactionScanner">
         <constructor-arg value="dubbo-demo-app"/>
         <constructor-arg value="my_test_tx_group"/>

@@ -26,8 +26,10 @@
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
+    <!-- idea consumer是用thirft协议来消费服务 -->
     <dubbo:protocol name="native-thrift"/>
 
+    <!-- 需要把thrift生成的所有api放在一个share的mavn项目中 -->
     <dubbo:reference id="demoService" interface="org.apache.dubbo.samples.rpc.nativethrift.api.DemoService$Iface"
                      version="1.0.0"/>
 </beans>

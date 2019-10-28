@@ -26,10 +26,13 @@
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
+    <!-- idea 协议要使用 native-thrift? 但是官方网站说与原生的thrift不兼容 -->
     <dubbo:protocol name="native-thrift" id="native-thrift" port="2345"/>
 
+    <!-- 把 thrift 生成的实体类注册成为spring bean -->
     <bean id="demoService" class="org.apache.dubbo.samples.rpc.nativethrift.DemoServiceImpl"/>
 
+    <!-- idea 这里的interface要使用 thrift 生成出来的interface -->
     <dubbo:service interface="org.apache.dubbo.samples.rpc.nativethrift.api.DemoService$Iface" ref="demoService"
                    version="1.0.0"/>
 
