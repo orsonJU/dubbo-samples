@@ -25,6 +25,8 @@
 
     <dubbo:application name="direct-consumer"/>
 
+    <!-- 通过配置 url，来直接通过对应的协议来进行服务调用 -->
+    <!-- ORSON-TODO failed to call directly -->
     <dubbo:reference id="directService" check="false" interface="org.apache.dubbo.samples.direct.api.DirectService"
                      url="${target.address:localhost}:20880" group="test" version="1.0.0-daily"/>
 </beans>
