@@ -23,6 +23,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.concurrent.CountDownLatch;
 
+// idea 可以测试同时间把VersionProvider以及VersionProvider2一起开启，因为consumer可以消费任意版本的服务
 public class VersionProvider {
 
     public static void main(String[] args) throws Exception {

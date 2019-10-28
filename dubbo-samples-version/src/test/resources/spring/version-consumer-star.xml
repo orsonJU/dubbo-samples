@@ -27,6 +27,7 @@
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
+    <!-- mist 如果version是 * 的话， 那到底是什么version呢？ 难道是多个version随意选择一个？ -->
     <dubbo:reference id="versionService" interface="org.apache.dubbo.samples.version.api.VersionService" version="*"/>
 
 </beans>
