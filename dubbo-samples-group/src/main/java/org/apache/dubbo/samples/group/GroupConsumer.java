@@ -23,7 +23,11 @@ import org.apache.dubbo.samples.group.api.GroupService;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+/*
+    idea 无论是group， 还是version，都可以实现同一个服务，不同实现的区分。
 
+    我觉得更多的是为了提供更多粒度的控制，不同的分组，同一个分组中有不同的版本
+ */
 public class GroupConsumer {
 
     public static void main(String[] args) {

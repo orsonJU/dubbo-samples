@@ -31,10 +31,12 @@
 
     <dubbo:protocol name="dubbo" port="20880"/>
 
+    <!-- mist 这册两个相同的server，但是名字不同 -->
     <bean id="groupAService" class="org.apache.dubbo.samples.group.impl.GroupAServiceImpl"/>
 
     <bean id="groupBService" class="org.apache.dubbo.samples.group.impl.GroupBServiceImpl"/>
 
+    <!-- idea 相同的接口，不同的实现，可以根据group来进行区分？ -->
     <dubbo:service group="groupA" interface="org.apache.dubbo.samples.group.api.GroupService" ref="groupAService"/>
 
     <dubbo:service group="groupB" interface="org.apache.dubbo.samples.group.api.GroupService" ref="groupBService"/>
