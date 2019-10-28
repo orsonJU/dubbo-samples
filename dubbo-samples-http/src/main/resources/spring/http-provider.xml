@@ -29,6 +29,8 @@
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
+    <!-- 使用http协议，而不是duboo协议，端口也是20880变成8080 -->
+    <!-- mist, 当使用http协议当时候，需要配置对应当server服务器？-->
     <dubbo:protocol name="http" id="http" port="${servlet.port:8080}" server="${servlet.container:tomcat}"/>
 
     <bean id="demoService" class="org.apache.dubbo.samples.http.impl.DemoServiceImpl"/>

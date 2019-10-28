@@ -27,9 +27,11 @@ import org.apache.dubbo.samples.annotation.api.HelloService;
 
 import org.springframework.stereotype.Component;
 
+// idea 注意，这是使用的是spring提供的注解 >> org.springframework.stereotype.Component
 @Component("annotationAction")
 public class AnnotationAction {
 
+    // idea 使用dubbo的org.apache.dubbo.config.annotation.Reference注解实现consumer的 <dubbo:reference interface="" version="" >
     @Reference(interfaceClass = HelloService.class, version = AnnotationConstants.VERSION /*,
             methods = {
                     @Method(
@@ -42,6 +44,9 @@ public class AnnotationAction {
     )
     private HelloService helloService;
 
+
+    // idea 使用dubbo的org.apache.dubbo.config.annotation.Reference注解实现consumer的 <dubbo:reference interface="" version="" timeout="" methods="">
+    // ORSON-TODO methods是针对某个方法设置的？
     @Reference(interfaceClass = GreetingService.class,
             version = AnnotationConstants.VERSION,
             timeout = 1000,

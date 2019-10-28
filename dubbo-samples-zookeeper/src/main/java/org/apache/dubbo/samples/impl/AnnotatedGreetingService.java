@@ -22,6 +22,7 @@ package org.apache.dubbo.samples.impl;
 import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.samples.api.GreetingService;
 
+// idea 使用的是dubbo自己的service注解 >> org.apache.dubbo.config.annotation.Service
 @Service(version = "1.0.0")
 public class AnnotatedGreetingService implements GreetingService {
 

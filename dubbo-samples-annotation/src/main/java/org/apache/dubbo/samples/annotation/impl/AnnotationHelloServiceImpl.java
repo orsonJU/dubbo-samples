@@ -22,6 +22,14 @@ import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.samples.annotation.AnnotationConstants;
 import org.apache.dubbo.samples.annotation.api.HelloService;
 
+/*
+    idea
+    <dubbo:service interface="org.apache.dubbo.samples.annotation.api.HelloService" ref="annotationHelloServiceImpl" version="1.0.0_annotation">
+        <dubbo:method name="sayGoodbye" timeout="250" retries="0" />
+    </dubbo:service>
+
+    where 'annotationHelloServiceImpl' is bean registered in spring context
+ */
 @Service(version = AnnotationConstants.VERSION, methods = {@Method(name = "sayGoodbye", timeout = 250, retries = 0)})
 public class AnnotationHelloServiceImpl implements HelloService {
 

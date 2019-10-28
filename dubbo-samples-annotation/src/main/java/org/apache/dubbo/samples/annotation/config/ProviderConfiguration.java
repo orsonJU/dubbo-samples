@@ -24,6 +24,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
+
+// idea 相当于 @EnableWebMvc 或者其他自动注册注解一样
+// 也可以在当前这个注解类下面对需要暴露对服务进行注解，例如使用dubbo自己对@Server等
 @EnableDubbo(scanBasePackages = "org.apache.dubbo.samples.annotation.impl")
 @PropertySource("classpath:/spring/dubbo-provider.properties")
 public class ProviderConfiguration {

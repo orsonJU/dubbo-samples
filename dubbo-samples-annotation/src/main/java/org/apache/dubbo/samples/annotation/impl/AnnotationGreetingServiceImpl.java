@@ -20,6 +20,7 @@ import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.samples.annotation.AnnotationConstants;
 import org.apache.dubbo.samples.annotation.api.GreetingService;
 
+// idea <dubbo:server version="">, interface应该是直接获取当前类的getSupperClasss(), ref就是当前实现类
 @Service(version = AnnotationConstants.VERSION)
 public class AnnotationGreetingServiceImpl implements GreetingService {
 
