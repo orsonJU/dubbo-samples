@@ -25,6 +25,7 @@ public class Configurator {
     private static CuratorFramework client;
 
     public static void main(String[] args) {
+        // 使用的是curator的factory类
         client = newClient("127.0.0.1:2181", 60 * 1000, 60 * 1000, new ExponentialBackoffRetry(6000, 3));
         client.start();
 

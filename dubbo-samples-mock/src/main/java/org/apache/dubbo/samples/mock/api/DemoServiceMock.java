@@ -20,6 +20,7 @@ package org.apache.dubbo.samples.mock.api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// idea mock 和 stub的区别可能是， mock 是 伪装某个服务功能, 而stub是控制某个功能的行为，修改或者增加逻辑
 public class DemoServiceMock implements DemoService {
     private static Logger logger = LoggerFactory.getLogger(DemoServiceMock.class);
 
