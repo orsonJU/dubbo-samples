@@ -39,6 +39,7 @@ public class AsyncServiceIT {
     @Test
     public void testCompletableFuture() throws Exception {
         asyncService.sayHello("completable future");
+        // mist 如何做到使用ThreadLocal来获取sayHello的value呢？
         CompletableFuture<String> helloFuture = RpcContext.getContext().getCompletableFuture();
         CountDownLatch latch = new CountDownLatch(1);
         helloFuture.whenComplete((retValue, exception) -> {

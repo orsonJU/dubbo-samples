@@ -35,6 +35,7 @@ public class AsyncConsumer {
         AsyncService asyncService = context.getBean("asyncService", AsyncService.class);
         asyncService.sayHello("world");
 
+        // idea 当前线程中的Rpc信息存放的应该是asyncService调用sayHello方法的信息
         CompletableFuture<String> helloFuture = RpcContext.getContext().getCompletableFuture();
         helloFuture.whenComplete((retValue, exception) -> {
             if (exception == null) {
