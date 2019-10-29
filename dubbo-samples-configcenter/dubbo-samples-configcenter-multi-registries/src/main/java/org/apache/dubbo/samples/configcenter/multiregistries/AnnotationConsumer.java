@@ -37,6 +37,8 @@ public class AnnotationConsumer {
         System.out.println("result: " + hello);
     }
 
+
+    // idea brilliant，可以把注解扫描的部分放进一个内部类中，这样就不会被spring的自动扫描碰到
     @Configuration
     @EnableDubbo(scanBasePackages = "org.apache.dubbo.samples.configcenter.multiregistries.action")
     @PropertySource("classpath:/spring/dubbo-consumer.properties")

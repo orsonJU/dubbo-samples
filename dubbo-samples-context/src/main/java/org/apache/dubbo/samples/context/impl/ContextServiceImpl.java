@@ -25,10 +25,11 @@ public class ContextServiceImpl implements ContextService {
 
     @Override
     public String sayHello(String name) {
-
+        // 判断是否provider端
         boolean isProviderSide = RpcContext.getContext().isProviderSide();
         String clientIP = RpcContext.getContext().getRemoteHost();
         String remoteApplication = RpcContext.getContext().getRemoteApplicationName();
+        // 获取当前provider端的application名字
         String application = RpcContext.getContext().getUrl().getParameter("application");
 
         return "Hello " + name + ", response from provider: " + RpcContext.getContext().getLocalAddress() +
