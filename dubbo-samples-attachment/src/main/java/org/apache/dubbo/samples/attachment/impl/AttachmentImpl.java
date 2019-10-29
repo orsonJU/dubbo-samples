@@ -32,6 +32,8 @@ public class AttachmentImpl implements AttachmentService {
         RpcContext context = RpcContext.getContext();
 
         // the attachment will be remove after this
+        // idea consumer端使用attachment, 然后提供端通过attachment来使用
+        // 可以用来传递隐藏的参数值，例如需要验证的时候，验证的token不应该是这个方法的参数之一，就可以通过隐藏参数来传递，然后在filter中进行验证
         String index = context.getAttachment("index");
         System.out.println("receive attachment index: " + index);
 
