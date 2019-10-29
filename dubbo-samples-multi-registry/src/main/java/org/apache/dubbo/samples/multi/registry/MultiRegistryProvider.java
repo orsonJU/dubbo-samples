@@ -27,9 +27,11 @@ import java.util.concurrent.CountDownLatch;
 public class MultiRegistryProvider {
 
     public static void main(String[] args) throws Exception {
+        // 启动两个内嵌的zookeeper，不需要依赖外部的zookeeper
         new EmbeddedZooKeeper(2181, false).start();
         new EmbeddedZooKeeper(2182, false).start();
 
+        // 启动，这册服务到两个zookeeper中
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/multi-registry-provider.xml");
         context.start();
 

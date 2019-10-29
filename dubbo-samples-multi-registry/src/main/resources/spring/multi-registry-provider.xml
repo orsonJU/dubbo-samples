@@ -25,6 +25,7 @@
 
     <dubbo:application name="multi-registry-provider"/>
 
+    <!-- 设置两个服务注册中心 -->
     <dubbo:registry id="beijingRegistry" address="zookeeper://${zookeeper.address:127.0.0.1}:2181" default="false"/>
     <dubbo:registry id="shanghaiRegistry" address="zookeeper://${zookeeper.address:127.0.0.1}:2182" />
 
@@ -33,6 +34,7 @@
     <bean id="helloService" class="org.apache.dubbo.samples.multi.registry.impl.HelloServiceImpl"/>
     <bean id="demoService" class="org.apache.dubbo.samples.multi.registry.impl.DemoServiceImpl"/>
 
+    <!-- 分别将服务暴露到两个注册中心 -->
     <dubbo:service interface="org.apache.dubbo.samples.multi.registry.api.HelloService" ref="helloService"
                    registry="shanghaiRegistry,beijingRegistry"/>
     <dubbo:service interface="org.apache.dubbo.samples.multi.registry.api.DemoService" ref="demoService"

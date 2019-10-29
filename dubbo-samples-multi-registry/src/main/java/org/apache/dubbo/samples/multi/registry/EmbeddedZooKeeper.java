@@ -41,6 +41,7 @@ import org.springframework.util.SocketUtils;
  * @author Mark Fisher
  * @author David Turanski
  */
+// idea， 因为zookee是java写的，所以这里直接就启动了一个zookeeper，并不需要依赖外部的zookeeper，有点类似于springboot使用的EmbeddedTomcat一样
 public class EmbeddedZooKeeper implements SmartLifecycle {
 
     /**

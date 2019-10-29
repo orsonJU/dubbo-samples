@@ -25,10 +25,16 @@
 
     <dubbo:application name="multi-registry-consumer"/>
 
+    <!-- idea multiple的注册中心， 北京/上海各拥有一个注册中心 -->
     <dubbo:registry id="beijingRegistry" address="zookeeper://${zookeeper.address:127.0.0.1}:2181" default="false" />
+    <!-- idea default 将会是上海的注册中心 -->
     <dubbo:registry id="shanghaiRegistry" address="zookeeper://${zookeeper.address:127.0.0.1}:2182" />
 
+
+
     <dubbo:reference id="demoServiceFormDefault" interface="org.apache.dubbo.samples.multi.registry.api.DemoService"/>
+
+    <!-- idea 通过 指定registry来实现对应的服务只发布到对应的服务中心 -->
     <dubbo:reference id="demoServiceFormBeijing" interface="org.apache.dubbo.samples.multi.registry.api.DemoService"
                      registry="beijingRegistry"/>
     <dubbo:reference id="helloServiceFormBeijing" interface="org.apache.dubbo.samples.multi.registry.api.HelloService"
