@@ -25,6 +25,7 @@
 
     <dubbo:application name="configcenter-multiprotocol-consumer"/>
 
+    <!-- 配置元数据中心, 记住格式是 zookeeper://host:port -->
     <dubbo:config-center address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
     <dubbo:reference id="demoService" protocol="dubbo"
