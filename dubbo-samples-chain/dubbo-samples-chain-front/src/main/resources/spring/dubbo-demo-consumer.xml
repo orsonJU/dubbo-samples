@@ -30,10 +30,13 @@
     <dubbo:application name="chain-frontend-app"/>
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
+
+    <!-- mist config-center, 配置中心（元数据中心），将所有url后面的参数都移动到配置中心中存贮 -->
     <dubbo:config-center address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
     <!-- generate proxy for the remote service, then demoService can be used in the same way as the
     local regular interface -->
+    <!-- idea 这里的6个服务中，有两个是middle提供的服务，有4个是backend提供的服务 -->
     <dubbo:reference id="catService" check="false" interface="org.apache.dubbo.samples.chain.api.CatService"/>
     <dubbo:reference id="dogService" check="false" interface="org.apache.dubbo.samples.chain.api.DogService"/>
     <dubbo:reference id="lionService" check="false" interface="org.apache.dubbo.samples.chain.api.LionService"/>

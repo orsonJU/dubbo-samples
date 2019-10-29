@@ -35,11 +35,13 @@
 
     <!-- generate proxy for the remote service, then demoService can be used in the same way as the
     local regular interface -->
+    <!-- idea 这里引用的是后台backend暴露的4个服务 -->
     <dubbo:reference id="catService" check="false" interface="org.apache.dubbo.samples.chain.api.CatService"/>
     <dubbo:reference id="dogService" check="false" interface="org.apache.dubbo.samples.chain.api.DogService"/>
     <dubbo:reference id="lionService" check="false" interface="org.apache.dubbo.samples.chain.api.LionService"/>
     <dubbo:reference id="tigerService" check="false" interface="org.apache.dubbo.samples.chain.api.TigerService"/>
 
+    <!-- idea 另外的两个服务是在当前的这个middle 中进行实现，来模拟micro-service的调用链环境 -->
     <bean id="chineseService" class="org.apache.dubbo.samples.chain.impl.ChineseServiceImpl"/>
     <dubbo:service interface="org.apache.dubbo.samples.chain.api.ChineseService" ref="chineseService"/>
 

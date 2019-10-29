@@ -28,10 +28,15 @@
     <!-- optional provider's application name, used for tracing dependency relationship -->
     <dubbo:application name="chain-backend-app"/>
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
+
+    <!-- idea default使用 dubbo 协议 -->
     <dubbo:protocol port="20880"/>
 
+    <!-- idea 配置中心 -->
     <dubbo:config-center address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
+
+    <!-- idea 在dubbo-samples-chain-api中一共申明了6个server 接口，在这里backend，只暴露其中的4个接口 -->
     <bean id="catService" class="org.apache.dubbo.samples.chain.impl.CatServiceImpl"/>
     <dubbo:service interface="org.apache.dubbo.samples.chain.api.CatService" ref="catService"/>
 
