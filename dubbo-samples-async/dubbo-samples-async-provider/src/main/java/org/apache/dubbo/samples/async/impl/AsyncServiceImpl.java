@@ -31,6 +31,7 @@ public class AsyncServiceImpl implements AsyncService {
 
     @Override
     public String sayHello(String name) {
+        // mist AsyncContext是参考了servlet 3.0的概念
         AsyncContext asyncContext = RpcContext.startAsync();
         logger.info("sayHello start");
 

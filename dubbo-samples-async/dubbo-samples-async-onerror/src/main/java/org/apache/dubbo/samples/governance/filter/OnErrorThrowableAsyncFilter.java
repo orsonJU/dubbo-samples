@@ -30,6 +30,7 @@ import org.apache.dubbo.rpc.RpcException;
 @Activate(group = {CommonConstants.PROVIDER, CommonConstants.CONSUMER}, order = 9997)
 public class OnErrorThrowableAsyncFilter extends ListenableFilter {
 
+    // 内部使用了OnErrorListener
     public OnErrorThrowableAsyncFilter() {
         listener = new OnErrorListener();
     }
@@ -39,6 +40,7 @@ public class OnErrorThrowableAsyncFilter extends ListenableFilter {
         return invoker.invoke(invocation);
     }
 
+    // idea 实现了Filter的onError
     class OnErrorListener implements Listener {
 
         @Override

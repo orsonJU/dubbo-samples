@@ -40,6 +40,7 @@ public class LegacyBlockFilter implements Filter {
         if (StringUtils.isEmpty(filters)) {
             filters = "";
         }
+        // mist 启动legacy-block-filter，听说会启动SPI机制来加载对应的filter
         filters += " legacy-block-filter";
         context.setAttachment("filters", filters);
 

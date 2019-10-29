@@ -40,6 +40,7 @@ public class AsyncPostprocessFilter implements Filter {
         if (StringUtils.isEmpty(filters)) {
             filters = "";
         }
+        // mist， 启用async-post-process-filter？
         filters += " async-post-process-filter";
         context.setAttachment("filters", filters);
 

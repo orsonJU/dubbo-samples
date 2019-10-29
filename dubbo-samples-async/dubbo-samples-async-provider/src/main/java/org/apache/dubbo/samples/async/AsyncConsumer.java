@@ -30,6 +30,8 @@ public class AsyncConsumer {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("META-INF/spring/async-consumer.xml");
         context.start();
 
+        // idea setAttachment， 就联想到了NIO，是否所有的请求都携带了这个attachment？
+        // 如果使用NIO，就联想到了netty
         RpcContext.getContext().setAttachment("consumer-key1", "consumer-value1");
         AsyncService asyncService = context.getBean("asyncService", AsyncService.class);
 

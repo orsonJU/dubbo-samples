@@ -36,6 +36,7 @@ public class AsyncServiceImpl implements AsyncService {
         RpcContext savedContext = RpcContext.getContext();
         RpcContext savedServerContext = RpcContext.getServerContext();
         return CompletableFuture.supplyAsync(() -> {
+            // idea，consumer设置的attachement，可以在provider端获取到
             String received = savedContext.getAttachment("consumer-key1");
             logger.info("consumer-key1 from attachment: " + received);
             savedServerContext.setAttachment("server-key1", "server-" + received);
