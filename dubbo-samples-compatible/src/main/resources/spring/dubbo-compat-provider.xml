@@ -29,6 +29,7 @@
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
+    <!-- idea 这里修改了dubbo使用的默认端口，从20880变成20890 -->
     <dubbo:protocol name="dubbo" port="20890"/>
 
     <bean id="demoService" class="org.apache.dubbo.samples.basic.impl.DemoServiceImpl"/>
