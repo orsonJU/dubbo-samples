@@ -45,6 +45,8 @@ public class CacheConsumer {
             Thread.sleep(500);
         }
 
+        // idea dubbo的lru策略，每个方法只保存1000个最近的value
+        // idea 一个字符16byte，"hello world" 大约10个字符，一共160byte，1000个就是160000byte 160000/1024=156kb=0.15Mb
         // default cache.size is 1000 for LRU, should have cache expired if invoke more than 1001 times
         for (int n = 0; n < 1001; n++) {
             String pre = null;

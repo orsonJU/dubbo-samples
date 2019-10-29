@@ -27,6 +27,8 @@
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
+    <!-- idea 以调用参数为key，缓存返回结果，可选：lru, threadlocal, jcache等 -> 所以dubbo支持不同的缓存library -->
+    <!-- mist 我还没有找到它在哪里实现的缓存 -->
     <dubbo:reference id="cacheService" interface="org.apache.dubbo.samples.cache.api.CacheService" cache="true"/>
 
 </beans>
