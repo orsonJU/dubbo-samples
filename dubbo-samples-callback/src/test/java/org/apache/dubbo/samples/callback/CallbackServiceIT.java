@@ -43,11 +43,13 @@ public class CallbackServiceIT {
     public void test() throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(1);
         List<String> results = new ArrayList<>();
+        // idea 这册一个listener
         service.addListener("foo.bar", msg -> {
             results.add(msg);
             latch.countDown();
         });
 
+        // 登台异步完成，在nodejs中，直接使用await就可以了
         latch.await(5000, TimeUnit.MILLISECONDS);
         Assert.assertFalse(results.isEmpty());
         Assert.assertTrue(results.get(0).startsWith("Changed:"));

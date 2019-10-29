@@ -32,6 +32,7 @@ public class CallbackServiceImpl implements CallbackService {
     private final Map<String, CallbackListener> listeners = new ConcurrentHashMap<String, CallbackListener>();
 
     public CallbackServiceImpl() {
+        // idea 这里使用一个新的线程，相当于Executors.SingleThread的线程池来处理所有事件的回调
         Thread t = new Thread(() -> {
             while (true) {
                 try {
@@ -39,6 +40,7 @@ public class CallbackServiceImpl implements CallbackService {
                         try {
                             entry.getValue().changed(getChanged(entry.getKey()));
                         } catch (Throwable t1) {
+                            // idea 当出现异常的时候，把listener移除掉？
                             listeners.remove(entry.getKey());
                         }
                     }

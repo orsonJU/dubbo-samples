@@ -24,6 +24,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
+// idea 这是一个maven plugin
 @Mojo(name = "local-address")
 public class LocalAddressMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project}")
